@@ -4,6 +4,7 @@ const Games = () =>{
     return(
         <div>
             <h1>Games</h1>
+            <p>Проверка хероку</p>
         </div>
     )
 }
