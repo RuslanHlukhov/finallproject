@@ -1,0 +1,27 @@
+{
+    "title":{
+        "1":"Entertainment Collection"
+    },
+    "home":{
+        "1":"Home"
+    },
+    "games":{
+        "1": "Games"
+    },
+    "films":{
+        "1":"Films"
+    },
+    "books":{
+        "1":"Books"
+    },
+    "login":{
+        "1":"Login"
+    },
+    "signOut":{
+        "1":"SignOut"
+    },
+    "users":{
+        "1":"Users"
+    }
+
+}

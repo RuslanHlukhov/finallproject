@@ -1,0 +1,30 @@
+a{
+    text-decoration: none;
+    color: white;
+}
+.lang{
+    text-align: center;
+}
+.btn_login{
+    width: 5rem;
+}
+.btn_lang{
+    width: 5rem;
+}
+.login{
+    text-align: center;
+}
+.btn_google img{
+    width: 50px;
+    height: 50px;
+   
+}
+.btn_gitHub img{
+    width: 50px;
+    height: 50px;
+
+}
+
+.btn_google{
+    margin: 20px;
+}
