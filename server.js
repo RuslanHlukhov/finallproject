@@ -1,28 +1,35 @@
 const express = require("express");
-const cors = require("cors");
+const app = express()
+const mysql = require('mysql');
+const cors = require('cors')
 
-const app = express();
+app.use(cors());
+app.use(express.json())
 
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
+const db = mysql.createConnection({
+  root: 'b3e46d0f59e357',
+  host: 'eu-cdbr-west-01.cleardb.com',
+  password: '26c6ffd2',
+  database: 'heroku_2dc269a62802d6e'
+})
 
-app.use(cors(corsOptions));
+app.post('/',(req, res) =>{
+  const title = req.body.title;
+  const text = req.body.text;
 
-// parse requests of content-type - application/json
-app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
-
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  db.query(
+    'INSERT INTO test (title, text) VALUES (?,?)'[title, text],
+    (err,result) =>{
+      if(err){
+        console.log(err);
+      }else{
+        res.send('Values inserted')
+      }
+    }
+  );
 });
 
-// set port, listen for requests
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+app.listen(3306, () =>{
+  console.log('Running om port 3306');
+})
 

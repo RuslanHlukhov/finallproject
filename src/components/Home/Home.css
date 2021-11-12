@@ -1,0 +1,19 @@
+
+.information{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form{
+  padding-top: 30px;
+  width: 60%;
+}
+.btn__sand{
+  margin-top: 32px;
+}
+.btn__send{
+  width: 100%;
+}

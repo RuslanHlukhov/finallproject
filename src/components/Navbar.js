@@ -59,7 +59,7 @@ const Navibar = () => {
                         :
                         <Nav className="me-auto">
 
-                            <Nav.Link><Link to="/">{t('home.1')}</Link></Nav.Link>
+                            
                             <Nav.Link><Link to="/games">{t('games.1')}</Link></Nav.Link>
                             <Nav.Link><Link to="/films">{t('films.1')}</Link></Nav.Link>
                             <Nav.Link><Link to="/books">{t('books.1')}</Link></Nav.Link>

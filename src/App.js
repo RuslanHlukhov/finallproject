@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navibar from './components/Navbar';
 import Games from './components/Games';
 import Films from './components/Films';
-import Books from './components/Books'
-import Home from './components/Home'
+import Books from './components/Books/Books.js'
+import Home from './components/Home/Home'
 import {
   BrowserRouter as Router,
   Routes,
