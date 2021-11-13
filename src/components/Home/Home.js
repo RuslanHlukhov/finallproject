@@ -7,17 +7,21 @@ import  Axios  from "axios";
 
 const Home = (props) => {
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
+    const [published, serPublished] = useState('');
+    const [name, setName] = useState('');
+    const [photo, setPhoto] = useState('')
     
 
-    const addTest = () =>{
-        Axios.post('/', {
-            title: title, 
-            text: text
-        }).then(()=>{
-            console.log("success");
-        });
-    };
+
+     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
+    const addTest = () =>
+    Axios.post(`${dbUrl}users`)
+      .then(function (response) {
+        console.log("sucess");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     return (
         <div>
