@@ -2,7 +2,7 @@ import React from "react";
 import './Home.css'
 import { useState } from "react";
 import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap'
-import  Axios  from "axios";
+import Axios from "axios";
 
 
 const Home = (props) => {
@@ -10,20 +10,20 @@ const Home = (props) => {
     const [text, setText] = useState('');
     // const [name, setName] = useState('');
     // const [photo, setPhoto] = useState('')
-    
+
 
 
     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
     const addTest = () => {
-    Axios.post(`${dbUrl}users`,{
-        title: title,
-        text: text,
-    }).then((response)=>{
-        console.log(response);
-    }).catch(error =>{
-        console.log(error.response);
-    })
-}
+        Axios.post(`${dbUrl}users`, {
+            title: title,
+            text: text,
+        }).then((response) => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error.response);
+        })
+    }
     return (
         <div>
             <div className="information">
@@ -46,18 +46,20 @@ const Home = (props) => {
                     </InputGroup>
                     <Form.Group>
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="title" placeholder="" 
-                        onChange={(event)=>{
-                            setTitle(event.target.value)}
-                        }
+                        <Form.Control type="title" placeholder=""
+                            onChange={(event) => {
+                                setTitle(event.target.value)
+                            }
+                            }
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Select text</Form.Label>
-                        <Form.Control as="textarea" rows={3} 
-                        onChange={(event)=>{
-                            setText(event.target.value)}
-                        }
+                        <Form.Control as="textarea" rows={3}
+                            onChange={(event) => {
+                                setText(event.target.value)
+                            }
+                            }
                         />
                     </Form.Group>
                     <Row>
@@ -68,13 +70,23 @@ const Home = (props) => {
                             </Form.Group>
                         </Col>
                         <Col className="btn__sand">
-                            <Button className="btn__send" as="input" type="button" value="Input" 
-                            onClick={addTest}
+                            <Button className="btn__send" as="input" type="button" value="Input"
+                                onClick={addTest}
                             />
                         </Col>
                     </Row>
                 </Form>
-
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                        <Card.Title>Card Title</Card.Title>
+                        <Card.Text>
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                        </Card.Text>
+                        <Button variant="primary">Go somewhere</Button>
+                    </Card.Body>
+                </Card>
             </div>
         </div>
     )
