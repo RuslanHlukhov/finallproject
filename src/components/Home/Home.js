@@ -54,7 +54,7 @@ const Home = (props) => {
                         <Form.Label>Select text</Form.Label>
                         <Form.Control as="textarea" rows={3} 
                         onChange={(event)=>{
-                            setTitle(event.target.value)}
+                            setText(event.target.value)}
                         }
                         />
                     </Form.Group>
