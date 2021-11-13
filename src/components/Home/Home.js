@@ -13,7 +13,7 @@ const Home = (props) => {
     
 
 
-     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
+    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
     const addTest = () =>
     Axios.post(`${dbUrl}users`)
       .then(function (response) {
