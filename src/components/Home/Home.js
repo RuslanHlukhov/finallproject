@@ -7,7 +7,7 @@ import  Axios  from "axios";
 
 const Home = (props) => {
     const [title, setTitle] = useState('');
-    const [text, serText] = useState('');
+    const [text, setText] = useState('');
     // const [name, setName] = useState('');
     // const [photo, setPhoto] = useState('')
     
