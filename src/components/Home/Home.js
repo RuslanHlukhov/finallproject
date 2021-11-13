@@ -14,15 +14,14 @@ const Home = (props) => {
 
 
     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
-    const addTest = () =>
-    Axios.post(`${dbUrl}users`)
-      .then(function (response) {
-        console.log("sucess");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+    const addTest = () => {
+    Axios.post(`${dbUrl}users`,{
+        name: name,
+        title: title,
+    }).then(()=>{
+        console.log('success');
+    })
+}
     return (
         <div>
             <div className="information">
