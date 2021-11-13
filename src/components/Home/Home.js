@@ -18,7 +18,7 @@ const Home = (props) => {
     Axios.post(`${dbUrl}users`,{
         text: text,
         title: title,
-    }).then(()=>{
+    }).then((response)=>{
         console.log('success');
     })
 }
