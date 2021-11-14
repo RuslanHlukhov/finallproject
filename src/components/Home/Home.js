@@ -1,16 +1,17 @@
 import React from "react";
 import './Home.css'
 import { useState } from "react";
-import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap'
+import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap'
 import Axios from "axios";
 
 
 const Home = (props) => {
+    
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     // const [name, setName] = useState('');
     // const [photo, setPhoto] = useState('')
-
+    const [items, setItems] = useState([]);
 
 
     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
@@ -18,13 +19,23 @@ const Home = (props) => {
         Axios.post(`${dbUrl}users`, {
             title: title,
             text: text,
-        }).then((response) => {
-            console.log(response);
+        }).then(() => {
+            setItems([
+                ...items,
+                {
+                    title: title,
+                    text: text,
+                }
+            ])
         }).catch(error => {
             console.log(error.response);
         })
+        Axios.get(`${dbUrl}users`,{
+        }).then((response) =>{
+            setItems(response.data)
+        })
     }
-    return (
+    return (   
         <div>
             <div className="information">
                 <Form className="form">
@@ -76,17 +87,29 @@ const Home = (props) => {
                         </Col>
                     </Row>
                 </Form>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
+                {items.map((key,val) => { 
+                    return(               
+                <div class="container">
+                <Col>
+                    <div class="row">
+                        <div class="col-sm">
+                            <Card style={{ width: '25rem' }}>
+                                <Card.Img variant="top" src="holder.js/100px180" />
+                                <Card.Body>
+                                    <Card.Title>{val.title}</Card.Title>
+                                    <Card.Text>
+                                        {val.text}
+                                    </Card.Text>
+                                    <Button variant="primary">Go somewhere</Button>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    </div>
+                    </Col>      
+                </div>  
+                    ) 
+                })}   
+                     
             </div>
         </div>
     )
