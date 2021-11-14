@@ -11,7 +11,7 @@ const Home = (props) => {
     const [text, setText] = useState('');
     // const [name, setName] = useState('');
     // const [photo, setPhoto] = useState('')
-    const [items, setItems] = useState([]);
+
 
 
     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
@@ -19,24 +19,13 @@ const Home = (props) => {
         Axios.post(`${dbUrl}users`, {
             title: title,
             text: text,
-        }).then(() => {
-            setItems([
-                ...items,
-                {
-                    title: title,
-                    text: text,
-                }
-            ])
+        }).then((response) => {
+            console.log(response);
         }).catch(error => {
             console.log(error.response);
         })
     }
-    const getData = () => {
-        Axios.get(`${dbUrl}users`).then((response) =>{
-                setItems(response.data)
-            })
-        } 
-    return (   
+    return (
         <div>
             <div className="information">
                 <Form className="form">
@@ -83,13 +72,12 @@ const Home = (props) => {
                         </Col>
                         <Col className="btn__sand">
                             <Button className="btn__send" as="input" type="button" value="Input"
-                                onClick={addTest, getData}
+                                onClick={addTest}
                             />
                         </Col>
                     </Row>
                 </Form>
-                {items.map((key,val) => { 
-                    return(               
+
                 <div class="container">
                 <Col>
                     <div class="row">
@@ -97,20 +85,18 @@ const Home = (props) => {
                             <Card style={{ width: '25rem' }}>
                                 <Card.Img variant="top" src="holder.js/100px180" />
                                 <Card.Body>
-                                    <Card.Title>{val.title}</Card.Title>
+                                    <Card.Title>Card Title</Card.Title>
                                     <Card.Text>
-                                        {val.text}
+                                        Some quick example text to build on the card title and make up the bulk of
+                                        the card's content.
                                     </Card.Text>
                                     <Button variant="primary">Go somewhere</Button>
                                 </Card.Body>
                             </Card>
                         </div>
                     </div>
-                    </Col>      
-                </div>  
-                    ) 
-                })}   
-                     
+                    </Col>
+                </div>
             </div>
         </div>
     )
