@@ -3,9 +3,16 @@ import './Home.css'
 import { useState } from "react";
 import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap'
 import Axios from "axios";
+import Post from "../Post/Post";
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 
 const Home = (props) => {
+    const { t, i18n } = useTranslation();
+    const handleClick = (lang) => {
+        i18n.changeLanguage(lang);
+    }
     
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
@@ -25,19 +32,27 @@ const Home = (props) => {
             console.log(error.response);
         })
     }
+    const [value,setValue]=useState('');
+    const handleSelect=(e)=>{
+      console.log(e);
+      setValue(e)
+    }
+    const isLogin = useSelector(({ isLogin }) => isLogin);
     return (
         <div>
-            <div className="information">
+            {isLogin ?
+            <div className="information col-lg-3" >
                 <Form className="form">
                     <InputGroup className="mb-3">
                         <DropdownButton
                             variant="outline-secondary"
-                            title="Выберите раздел"
-                            id="input-group-dropdown-1"
+                            title={value}
+                            id="dropdown-menu-align-right"
+                            onSelect={handleSelect}
                         >
-                            <Dropdown.Item href="#">Игры</Dropdown.Item>
-                            <Dropdown.Item href="#">Фильмы</Dropdown.Item>
-                            <Dropdown.Item href="#">Книги</Dropdown.Item>
+                            <Dropdown.Item eventKey={t('games.1')}>{t('games.1')}</Dropdown.Item>
+                            <Dropdown.Item eventKey={t('films.1')}>{t('films.1')}</Dropdown.Item>
+                            <Dropdown.Item eventKey={t('books.1')}>{t('books.1')}</Dropdown.Item>
                             <Dropdown.Divider />
                         </DropdownButton>
                         <FormControl aria-label="Text input with dropdown button" />
@@ -77,27 +92,11 @@ const Home = (props) => {
                         </Col>
                     </Row>
                 </Form>
-
-                <div class="container">
-                <Col>
-                    <div class="row">
-                        <div class="col-sm">
-                            <Card style={{ width: '25rem' }}>
-                                <Card.Img variant="top" src="holder.js/100px180" />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
-                                    <Button variant="primary">Go somewhere</Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </div>
-                    </Col>
-                </div>
-            </div>
+                <Post />
+                </div> 
+                :
+                <Post />
+            }                        
         </div>
     )
 }
