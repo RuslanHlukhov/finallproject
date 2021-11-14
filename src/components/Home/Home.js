@@ -30,11 +30,12 @@ const Home = (props) => {
         }).catch(error => {
             console.log(error.response);
         })
-        Axios.get(`${dbUrl}users`,{
-        }).then((response) =>{
-            setItems(response.data)
-        })
     }
+    const getData = () => {
+        Axios.get(`${dbUrl}users`).then((response) =>{
+                setItems(response.data)
+            })
+        } 
     return (   
         <div>
             <div className="information">
@@ -82,7 +83,7 @@ const Home = (props) => {
                         </Col>
                         <Col className="btn__sand">
                             <Button className="btn__send" as="input" type="button" value="Input"
-                                onClick={addTest}
+                                onClick={addTest, getData}
                             />
                         </Col>
                     </Row>
