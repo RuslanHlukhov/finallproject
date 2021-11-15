@@ -1,4 +1,4 @@
-import { Axios } from "axios";
+import  Axios  from "axios";
 
 const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
 export const addTest = (res) => {
