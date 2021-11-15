@@ -30,7 +30,7 @@ const Home = (props) => {
         })
     }
     const getAllPost = () =>
-        Axios.get(`${dbUrl}users/published`,{
+        Axios.get(`${dbUrl}users`,{
             title:title,
             text:text
         })
