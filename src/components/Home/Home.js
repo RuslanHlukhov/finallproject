@@ -31,8 +31,10 @@ const Home = (props) => {
     }
     const getAllPost = () =>
         Axios.get(`${dbUrl}users`,{
+            params:{
             title:title,
             text:text
+            }
         })
         .then((response) => {
             console.log(response);
@@ -98,6 +100,9 @@ const Home = (props) => {
                         <Col className="btn__sand">
                             <Button className="btn__send" as="input" type="button" value="Input"
                                 onClick={addTest, getAllPost}
+                            />
+                            <Button className="btn__send" as="input" type="button" value="Input"
+                                onClick={getAllPost}
                             />
                         </Col>
                     </Row>
