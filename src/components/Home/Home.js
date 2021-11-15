@@ -17,9 +17,9 @@ const Home = (props) => {
     const [text, setText] = useState('');      
     const [postList, setPostList] = useState([]) 
 
-    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
+    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/users'
     const addTest = () => {
-        Axios.post(`${dbUrl}users`, {
+        Axios.post(`${dbUrl}`, {
             title:title,
             text:text
         })
