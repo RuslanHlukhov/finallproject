@@ -6,6 +6,7 @@ import Axios from "axios";
 import Post from "../Post/Post";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { addTest } from "../constApi/constApi";
 
 
 const Home = (props) => {
@@ -21,17 +22,7 @@ const Home = (props) => {
 
 
 
-    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
-    const addTest = () => {
-        Axios.post(`${dbUrl}users`, {
-            title: title,
-            text: text,
-        }).then((response) => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error.response);
-        })
-    }
+   
     const [value,setValue]=useState('');
     const handleSelect=(e)=>{
       console.log(e);

@@ -8,11 +8,11 @@ import Home from './components/Home/Home'
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route,  
 } from "react-router-dom";
 import Post from './components/Post/Post';
 import Login from './components/Login';
+import { Navigate} from 'react-router-dom'
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
   <Router>
   <Navibar />
   <Routes>
+   <Route exact path="/" component={() => (<Navigate to='/home' />)}/>
     <Route exact path="/home" element={<Home/>}/>
     <Route exact path="/games" element={<Games/>}/>
     <Route exact path="/films" element={<Films/>}/>
