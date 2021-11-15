@@ -3,10 +3,10 @@ import  Axios  from "axios";
 const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
 export const addTest = (res) => {
     Axios.post(`${dbUrl}users`, res)
-    .then(function (response) {
+    .then((response) => {
         console.log(response);
     })
-    .catch( function (error) {
+    .catch((error) => {
         console.log(error);
     })
 }
