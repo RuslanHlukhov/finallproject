@@ -5,7 +5,7 @@ import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, C
 import Post from "../Post/Post";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { addTest } from "../constApi/constApi";
+import  Axios  from "axios";
 
 
 const Home = (props) => {
@@ -14,10 +14,21 @@ const Home = (props) => {
         i18n.changeLanguage(lang);
     }  
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
-    // const [name, setName] = useState('');
-    // const [photo, setPhoto] = useState('')
+    const [text, setText] = useState('');       
 
+    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
+    const addTest = () => {
+        Axios.post(`${dbUrl}users`, {
+            title:title,
+            text:text
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
 
 
    

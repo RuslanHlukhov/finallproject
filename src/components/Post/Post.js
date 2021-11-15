@@ -2,22 +2,12 @@ import React from "react";
 import { Button, Row, Col, Card, Modal } from 'react-bootstrap'
 import { useState } from "react";
 import './Post.css'
-import {addTest} from '../constApi/constApi'
 
 const Post = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
-
-    const addPost = () =>{
-        addTest({
-            title:title,
-            text:text
-        });
-    }
+  
 
     return (
         <div className="container post">
