@@ -111,7 +111,8 @@ const Home = (props) => {
             }   
 
              {postList.map((val,key)=>{
-                 return <div>{val.title} </div>
+                 return <div> <h3>{val.title}, {val.text} </h3></div>
+                 
                 })}                     
         </div>
     )
