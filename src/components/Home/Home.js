@@ -29,7 +29,17 @@ const Home = (props) => {
             console.log(err);
         })
     }
-
+    const getAllPost = () =>
+        Axios.get(`${dbUrl}users/published`,{
+            title:title,
+            text:text
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 
    
     const [value,setValue]=useState('');
@@ -87,7 +97,7 @@ const Home = (props) => {
                         </Col>
                         <Col className="btn__sand">
                             <Button className="btn__send" as="input" type="button" value="Input"
-                                onClick={addTest}
+                                onClick={addTest, getAllPost}
                             />
                         </Col>
                     </Row>
