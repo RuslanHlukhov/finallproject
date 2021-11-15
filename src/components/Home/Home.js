@@ -31,7 +31,7 @@ const Home = (props) => {
         })
     }
     const getAllPost = () =>
-        Axios.get(`${dbUrl}users`)
+        Axios.get(`${dbUrl}published`)
         .then((response) => {
             setPostList(response.data)
         })
