@@ -14,7 +14,8 @@ const Home = (props) => {
         i18n.changeLanguage(lang);
     }  
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('');       
+    const [text, setText] = useState('');      
+    const [postList, setPostList] = useState([]) 
 
     const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/'
     const addTest = () => {
@@ -30,14 +31,9 @@ const Home = (props) => {
         })
     }
     const getAllPost = () =>
-        Axios.get(`${dbUrl}users`,{
-            params:{
-            title:title,
-            text:text
-            }
-        })
+        Axios.get(`${dbUrl}users`)
         .then((response) => {
-            console.log(response);
+            setPostList(response.data)
         })
         .catch((err) => {
             console.log(err);
@@ -111,7 +107,12 @@ const Home = (props) => {
                 </div> 
                 :
                 <Post />
-            }                        
+               
+            }   
+
+             {postList.map((val,key)=>{
+                 return <div>{val.title} </div>
+                })}                     
         </div>
     )
 }
