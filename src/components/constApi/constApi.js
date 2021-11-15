@@ -6,7 +6,7 @@ export const addTest = (res) => {
     .then((response) => {
         console.log(response);
     })
-    .catch((error) => {
-        console.log(error);
+    .catch((err) => {
+        console.log(err);
     })
 }

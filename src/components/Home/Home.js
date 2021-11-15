@@ -2,7 +2,6 @@ import React from "react";
 import './Home.css'
 import { useState } from "react";
 import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap'
-import Axios from "axios";
 import Post from "../Post/Post";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -13,8 +12,7 @@ const Home = (props) => {
     const { t, i18n } = useTranslation();
     const handleClick = (lang) => {
         i18n.changeLanguage(lang);
-    }
-    
+    }  
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     // const [name, setName] = useState('');
