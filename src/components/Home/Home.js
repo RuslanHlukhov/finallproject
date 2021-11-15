@@ -99,7 +99,7 @@ const Home = (props) => {
                         </Col>
                         <Col className="btn__sand">
                             <Button className="btn__send" as="input" type="button" value="Input"
-                                onClick={addTest, getAllPost}
+                                onClick={addTest}
                             />
                             <Button className="btn__send" as="input" type="button" value="Input"
                                 onClick={getAllPost}
