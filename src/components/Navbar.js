@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Nav, Navbar, Button, Modal, Col } from "react-bootstrap";
+import React from "react";
+import { Nav, Navbar, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './Navbar.css'
 import { useTranslation } from 'react-i18next';
@@ -34,7 +34,7 @@ const Navibar = () => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
-                <Navbar.Brand>{t('title.1')}</Navbar.Brand>
+                <Navbar.Brand className="mr-2">{t('title.1')}</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     {isLogin ?

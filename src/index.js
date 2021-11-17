@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './components/i18next/i18next'
-import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";

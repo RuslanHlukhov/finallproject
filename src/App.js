@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navibar, {isLogin} from './components/Navbar';
+import Navibar from './components/Navbar';
 import Games from './components/Games';
 import Films from './components/Films';
 import Books from './components/Books/Books.js'

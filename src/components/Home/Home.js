@@ -1,11 +1,12 @@
 import React from "react";
 import './Home.css'
 import { useState } from "react";
-import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap'
+import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap'
 import Post from "../Post/Post";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import  Axios  from "axios";
+import { addTest, getAllPost} from "../Api/Api";
+import { useEffect } from "react";
 
 
 const Home = (props) => {
@@ -17,29 +18,24 @@ const Home = (props) => {
     const [text, setText] = useState('');      
     const [postList, setPostList] = useState([]) 
 
-    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/users'
-    const addTest = () => {
-        Axios.post(`${dbUrl}`, {
+    useEffect(() => {
+        getAllPost().then((res)=>{
+            setPostList(res)
+            console.log(res);
+        })
+    }, [])
+
+    const addPost = () =>{
+        if(title && text){
+        addTest ({
             title:title,
             text:text
         })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    }else{
+        console.log('Заполните все поля');
     }
-    const getAllPost = () =>
-        Axios.get(`${dbUrl}/published`)
-        .then((response) => {
-            setPostList(response.data)
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    }
 
-   
     const [value,setValue]=useState('');
     const handleSelect=(e)=>{
       console.log(e);
@@ -95,25 +91,37 @@ const Home = (props) => {
                         </Col>
                         <Col className="btn__sand">
                             <Button className="btn__send" as="input" type="button" value="Input"
-                                onClick={addTest}
-                            />
-                            <Button className="btn__send" as="input" type="button" value="Input"
-                                onClick={getAllPost}
+                                onClick={addPost}
                             />
                         </Col>
                     </Row>
                 </Form>
-                <Post />
+                <div>
+                    <Row>
+                    {postList.map((post)=>{
+                    return  <Post post={post}  />              
+                     })} 
+                      
+                     </Row>
+               </div>
                 </div> 
                 :
-                <Post />
-               
+                <div>
+                    <Row>
+                    
+                    {postList.map((post)=>{
+                    return  <Post post={post}  />                   
+                     })} 
+                      
+                     </Row>
+               </div>
             }   
-
-             {postList.map((val,key)=>{
-                 return <div> <h3>{val.title}, {val.text} </h3></div>
+            {/* <div>
+             {postList.map((post)=>{
+               return <Post title = {post.title} text=  {post.text} />
                  
-                })}                     
+                })}    
+            </div>                  */}
         </div>
     )
 }

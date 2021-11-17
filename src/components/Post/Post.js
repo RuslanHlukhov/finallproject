@@ -1,30 +1,30 @@
 import React from "react";
-import { Button, Row, Col, Card, Modal } from 'react-bootstrap'
+import { Button, Col, Card, Modal } from 'react-bootstrap'
 import { useState } from "react";
 import './Post.css'
 
-const Post = () => {
+
+const Post = ({post}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-  
+
+    const {title, text} = post;           
 
     return (
         <div className="container post">
             <Col>
-                <div className="col-sm-3">
-                    <Card style={{ width: '25rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button onClick={handleShow} variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </div>
+                <Card style={{ width: '100%' }}>
+                <Card.Header>Категория</Card.Header>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                        <Card.Title>{title}</Card.Title>
+                        <Card.Text>
+                        {text}
+                        </Card.Text>
+                        <Button variant="primary">Подробнее</Button>
+                    </Card.Body>
+                </Card>
             </Col>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
