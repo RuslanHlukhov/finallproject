@@ -15,7 +15,8 @@ const Home = (props) => {
         i18n.changeLanguage(lang);
     }  
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('');      
+    const [text, setText] = useState('');   
+    const [category, setCategory]    = useState('')
     const [postList, setPostList] = useState([]) 
 
     useEffect(() => {
@@ -29,6 +30,7 @@ const Home = (props) => {
         if(title && text){
         addTest ({
             title:title,
+            category: category,
             text:text
         })
     }else{
@@ -36,27 +38,36 @@ const Home = (props) => {
     }
     }
 
-    const [value,setValue]=useState('');
     const handleSelect=(e)=>{
       console.log(e);
-      setValue(e)
+      setCategory(e)
     }
     const isLogin = useSelector(({ isLogin }) => isLogin);
     return (
         <div>
             {isLogin ?
-            <div className="information col-lg-3" >
+            <div className="information col-lg-9" >
                 <Form className="form">
                     <InputGroup className="mb-3">
                         <DropdownButton
+                            name="category"
                             variant="outline-secondary"
-                            title={value}
+                            title={category}
                             id="dropdown-menu-align-right"
                             onSelect={handleSelect}
+                            onChange={(event) => {
+                                setCategory(handleSelect)
+                            }}
                         >
-                            <Dropdown.Item eventKey={t('games.1')}>{t('games.1')}</Dropdown.Item>
-                            <Dropdown.Item eventKey={t('films.1')}>{t('films.1')}</Dropdown.Item>
-                            <Dropdown.Item eventKey={t('books.1')}>{t('books.1')}</Dropdown.Item>
+                            <Dropdown.Item eventKey={t('games.1')}>{t('games.1')}
+                          
+                            </Dropdown.Item>
+                            <Dropdown.Item eventKey={t('films.1')}>{t('films.1')}
+                          
+                            </Dropdown.Item>
+                            <Dropdown.Item eventKey={t('books.1')}>{t('books.1')}
+                          
+                            </Dropdown.Item>
                             <Dropdown.Divider />
                         </DropdownButton>
                         <FormControl aria-label="Text input with dropdown button" />
@@ -96,33 +107,28 @@ const Home = (props) => {
                         </Col>
                     </Row>
                 </Form>
-                <div>
-                    <Row>
-                    {postList.map((post)=>{
-                    return  <Post post={post}  />              
-                     })} 
-                      
-                     </Row>
-               </div>
-                </div> 
-                :
-                <div>
-                    <Row>
-                    
+               
+                
+                     
                     {postList.map((post)=>{
                     return  <Post post={post}  />                   
-                     })} 
-                      
-                     </Row>
+                     })}                      
+                    
                </div>
-            }   
-            {/* <div>
-             {postList.map((post)=>{
-               return <Post title = {post.title} text=  {post.text} />
-                 
-                })}    
-            </div>                  */}
+               
+                :
+                <div>
+                    <Col>  
+                    {postList.map((post)=>{
+                    return  <Post post={post}  />                   
+                     })}                      
+                     </Col>
+                
+               </div>
+               
+            }              
         </div>
+        
     )
 }
 

@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Col, Card, Modal } from 'react-bootstrap'
+import { Button, Card, Modal,Row,Col } from 'react-bootstrap'
 import { useState } from "react";
 import './Post.css'
+import textfoto from '../img/textfoto.jpg'
 
 
 const Post = ({post}) => {
@@ -9,37 +10,44 @@ const Post = ({post}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const {title, text} = post;           
+    const {category, title, text} = post;           
 
     return (
-        <div className="container post">
-            <Col>
-                <Card style={{ width: '100%' }}>
-                <Card.Header>Категория</Card.Header>
-                    <Card.Img variant="top" src="holder.js/100px180" />
+        <div className="post">
+        <div className="container">
+            
+                <Col>
+                <Card >
+                <Card.Header>{category}</Card.Header>
+                    
                     <Card.Body>
                         <Card.Title>{title}</Card.Title>
                         <Card.Text>
                         {text}
                         </Card.Text>
-                        <Button variant="primary">Подробнее</Button>
+                        <Button variant="primary"onClick={handleShow}>Подробнее</Button>
                     </Card.Body>
                 </Card>
-            </Col>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Change
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                </Col>
+            
+             <Modal show={show} onHide={handleClose}> 
+
+            <Modal.Header closeButton>
+            <Row>
+            <h4 className="category">{category}</h4>
+            </Row>
+            </Modal.Header>
+            <h5 className="title">{title}</h5>
+            <Row><Modal.Title id="example-modal-sizes-title-lg" >           
+                </Modal.Title>
+            </Row>
+                           
+                <Card.Img className="photo" variant="top" src={textfoto} me-2/>
+                <Modal.Body className="textPost">{text}</Modal.Body>
+                
+            
+            </Modal> 
+        </div>
         </div>
     )
 }
