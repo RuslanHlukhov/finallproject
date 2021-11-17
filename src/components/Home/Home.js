@@ -17,7 +17,7 @@ const Home = (props) => {
     const [text, setText] = useState('');      
     const [postList, setPostList] = useState([]) 
 
-    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/users/'
+    const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/users'
     const addTest = () => {
         Axios.post(`${dbUrl}`, {
             title:title,
@@ -31,7 +31,7 @@ const Home = (props) => {
         })
     }
     const getAllPost = () =>
-        Axios.get(`${dbUrl}published`)
+        Axios.get(`${dbUrl}/published`)
         .then((response) => {
             setPostList(response.data)
         })
