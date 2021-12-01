@@ -3,8 +3,9 @@ import './FormPost.css'
 import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap'
 import Post from "../Post/Post";
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { addTest, getAllPost, } from "../Api/Api";
+import { useSelector, useDispatch } from 'react-redux';
+import { addTest, getAllPost } from "../Api/Api";
+import {getPosts} from '../../redux/action'
 
 
 const FormPost = (props) => {
@@ -12,20 +13,17 @@ const FormPost = (props) => {
     const handleClick = (lang) => {
         i18n.changeLanguage(lang);
     }  
+
+
+    const dispatch = useDispatch();
+ 
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');   
     const [category, setCategory] = useState('');
+    const [isUpdate, setIsUpdate] = useState(false);
     const [postList, setPostList] = useState([]);
     const [image, setImage] = useState('');
     const [id, setId] = useState('')
-
-    
-    useEffect(() => {
-        getAllPost().then((res)=>{ 
-            setPostList(res);
-        });
-    }, []);
-
     const addPost = () =>{
         if(title && text){
         addTest ({
@@ -33,12 +31,38 @@ const FormPost = (props) => {
             title:title,
             category: category,
             text:text,
-            image:image
-        })
+            image:image,
+            
+        })  
+         setIsUpdate(true)     
     }else{
         console.log('Заполните все поля');
     }
+    
     }
+
+    const posts = useSelector(({ posts }) => posts);
+    
+    useEffect(() => {
+        if(isUpdate){
+        getAllPost().then((res)=>{ 
+            dispatch(getPosts(res));
+            setPostList(res); 
+            setIsUpdate(true)             
+        });
+    }
+    }, [isUpdate]);
+
+    // useEffect(() => {
+    
+    //     getAllPost().then((res)=>{ 
+    //         dispatch(getPosts(res));
+    //         setPostList(res); 
+                   
+    //     });
+    
+    // }, [postList]);
+
     const uploadImage = async e =>{
         const files = e.target.files
         const data = new FormData()

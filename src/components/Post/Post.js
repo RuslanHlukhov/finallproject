@@ -1,5 +1,4 @@
 import React  from "react";
-import { useSelector } from "react-redux";
 import { Button, Card, Modal, Row, Col, FormControl, InputGroup } from 'react-bootstrap'
 import { useState } from "react";
 import './Post.css'
@@ -9,16 +8,12 @@ import edit from '../../img/edit.svg'
 import like from '../../img/like.svg'
 import dislike from '../../img/dislike.svg'
 import Rating from "../Rating/Rating";
-import {isLogin} from '../Navbar'
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from '../../redux/action';
 
 const Post = ({ post }) => {
 
-   
-
     const { category, title, text, id, name, image } = post;
-
     const [show, setShow] = useState(false);
     const [showUpdate, setShowUpdate] = useState(false);
     const [titleUpdate, setTitleUpdate] = useState(title);
@@ -28,6 +23,8 @@ const Post = ({ post }) => {
     const handleShow = () => setShow(true);
     const handleCloseUpdate = () => setShowUpdate(false);
     const handleShowUpdate = () => setShowUpdate(true);
+
+    
 
     const deletedPost = () => {
         deletePost({

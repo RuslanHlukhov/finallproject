@@ -5,8 +5,9 @@ export const initStore = {
   isLogin: false,
   user: {
     nameUser: '',
-    idUser: '',
+    idUser: '',   
   },
+  posts: [],
 };
 
 export const store = configureStore({

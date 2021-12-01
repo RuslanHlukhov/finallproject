@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 import Post from "../Post/Post";
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addTest, getAllPost, } from "../Api/Api";
 import FormPost from "../FormPost/FormPost";
 
 
+
 const Home = (props) => {
+    const dispatch = useDispatch();
     const { t, i18n } = useTranslation();
     const handleClick = (lang) => {
         i18n.changeLanguage(lang);
     }  
     const [postList, setPostList] = useState([]);
+    // const [isUpdate, setIsUpdate] = useState(false);
 
     useEffect(() => {
+        // if(isUpdate){
         getAllPost().then((res)=>{ 
+            // dispatch(getPosts(res));
             setPostList(res);
+            // setIsUpdate(true) 
         });
+    // }
     }, []);
 
     const isLogin = useSelector(({ isLogin }) => isLogin);

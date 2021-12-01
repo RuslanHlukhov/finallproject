@@ -28,22 +28,36 @@ const Books = () => {
                     <FormPost />
                     {postList
                         .filter((post) =>( 
+                            post.category === 'Книги'
+                                ))
+                        .map((post)=>{       
+                            return  <Post post={post} key={post.id}  />           
+                    })} 
+                     {postList
+                        .filter((post) =>( 
                             post.category === 'Books'
                                 ))
                         .map((post)=>{       
                             return  <Post post={post} key={post.id}  />           
-                    })}                          
+                    })}                                
                    </div>               
                     :
                     <div>
                         <Col>  
                         {postList
                             .filter((post) => (
+                                post.category === 'Книги'
+                            ))
+                            .map((post) => {
+                                return <Post post={post} key={post.id} />
+                            })}
+                            {postList
+                            .filter((post) => (
                                 post.category === 'Books'
                             ))
                             .map((post) => {
                                 return <Post post={post} key={post.id} />
-                            })}                   
+                            })}                      
                          </Col>
                    </div>
     

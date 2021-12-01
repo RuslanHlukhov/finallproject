@@ -4,7 +4,7 @@ import { getAllPost, } from "../Api/Api";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import FormPost from "../FormPost/FormPost";
-import {Col} from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 
 const Films = () => {
     const { t, i18n } = useTranslation();
@@ -20,38 +20,50 @@ const Films = () => {
     }, []);
 
     const isLogin = useSelector(({ isLogin }) => isLogin);
-    
+
     return (
         <div>
             {isLogin ?
-            <div className="information col-lg-9" >
-                <FormPost />
-                {postList
-                    .filter((post) =>( 
-                        post.category === 'Фильмы'
-                            ))
-                    .map((post)=>{       
-                        return  <Post post={post} key={post.id}  />           
-                })}                          
-               </div>               
-                :
-                <div>
-                    <Col>  
+                <div className="information col-lg-9" >
+                    <FormPost />
                     {postList
                         .filter((post) => (
                             post.category === 'Фильмы'
                         ))
                         .map((post) => {
                             return <Post post={post} key={post.id} />
-                        })}                   
-                     </Col>
-               </div>
+                        })}
+                    {postList
+                        .filter((post) => (
+                            post.category === 'Films'
+                        ))
+                        .map((post) => {
+                            return <Post post={post} key={post.id} />
+                        })}
+                </div>
+                :
+                <div>
+                    <Col>
+                        {postList
+                            .filter((post) => (
+                                post.category === 'Фильмы'
+                            ))
+                            .map((post) => {
+                                return <Post post={post} key={post.id} />
+                            })}
+                        {postList
+                            .filter((post) => (
+                                post.category === 'Films'
+                            ))
+                            .map((post) => {
+                                return <Post post={post} key={post.id} />
+                            })}
+                    </Col>
+                </div>
+            }
 
-               
-            }   
-                   
         </div>
-        
+
     )
 }
 

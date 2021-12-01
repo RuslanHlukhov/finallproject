@@ -6,18 +6,17 @@ export const logIn = (result) => {
       
     };
   };
-  export const token = (result) => {
-    return {
-      type: "TOKEN",
-      payload: result,
-      
-  };
-};
-
 export const addUser = (result) => {
     return {
       type: "ADD_USER",
       payload: result,
       
+  };
+};
+
+export const getPosts = (result) => {
+  return {
+    type: 'GET_POSTS',
+    payload: result,
   };
 };

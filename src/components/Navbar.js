@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useEffect} from "react";
 import { Nav, Navbar, Button, Col, Row, Form, Checkbox } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './Navbar.css'
@@ -9,9 +9,10 @@ import "firebase/compat/auth";
 import socialAuth from "./auth/auth";
 import { googleProvider } from '../firebase/authMethods'
 import { useDispatch } from "react-redux";
-import { addUser, logIn} from "../redux/action";
+import { addUser, logIn, getPosts} from "../redux/action";
 import { useSelector } from 'react-redux';
 import Darkstyles from "./Darkstyle/Darkstyle";
+
 
 const Navibar = () => {
 
