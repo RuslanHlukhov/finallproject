@@ -1,42 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { DropdownButton, Dropdown, Form, InputGroup, FormControl, Button, Row, Col } from 'react-bootstrap'
 import Post from "../Post/Post";
+import { getAllPost, } from "../Api/Api";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { addTest, getAllPost, } from "../Api/Api";
 import FormPost from "../FormPost/FormPost";
+import {Col} from 'react-bootstrap'
 
-
-const Home = (props) => {
+const Films = () => {
     const { t, i18n } = useTranslation();
     const handleClick = (lang) => {
         i18n.changeLanguage(lang);
-    }  
+    }
     const [postList, setPostList] = useState([]);
 
     useEffect(() => {
-        getAllPost().then((res)=>{ 
+        getAllPost().then((res) => {
             setPostList(res);
         });
     }, []);
 
     const isLogin = useSelector(({ isLogin }) => isLogin);
+    
     return (
         <div>
             {isLogin ?
             <div className="information col-lg-9" >
                 <FormPost />
-                    {postList.map((post)=>{
-                    return  <Post post={post} key={post.id}  />           
-                     })}   
-                                                     
+                {postList
+                    .filter((post) =>( 
+                        post.category === 'Фильмы'
+                            ))
+                    .map((post)=>{       
+                        return  <Post post={post} key={post.id}  />           
+                })}                          
                </div>               
                 :
                 <div>
                     <Col>  
-                    {postList.map((post)=>{
-                    return  <Post post={post} key={post.id} />                   
-                     })}                      
+                    {postList
+                        .filter((post) => (
+                            post.category === 'Фильмы'
+                        ))
+                        .map((post) => {
+                            return <Post post={post} key={post.id} />
+                        })}                   
                      </Col>
                </div>
 
@@ -48,4 +55,4 @@ const Home = (props) => {
     )
 }
 
-export default Home;
+export default Films

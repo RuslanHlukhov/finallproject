@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navibar from './components/Navbar';
-import Games from './components/Games';
-import Films from './components/Films';
+import Games from './components/Games/Games';
+import Films from './components/Films/Films';
 import Books from './components/Books/Books.js'
 import Home from './components/Home/Home'
 import {
@@ -12,7 +12,6 @@ import {
 } from "react-router-dom";
 import Post from './components/Post/Post';
 import Login from './components/Login';
-import { Navigate} from 'react-router-dom'
 
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
   <Router>
   <Navibar />
   <Routes>
-   <Route exact path="/" component={() => (<Navigate to='/home' />)}/>
+   <Route  exact path="/" element={<Home />} />
     <Route exact path="/home" element={<Home/>}/>
     <Route exact path="/games" element={<Games/>}/>
     <Route exact path="/films" element={<Films/>}/>

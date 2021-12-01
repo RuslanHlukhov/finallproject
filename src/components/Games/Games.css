@@ -13,6 +13,10 @@
     margin-left: auto;
     margin-right: auto;
 }
+.form {
+    padding-top: 30px;
+    width: 100%;
+}
 .category{
     text-align: center;
 }
@@ -26,48 +30,15 @@
     overflow: hidden;
     white-space: nowrap;
 }
-.photodel{
-    margin: 5px;
-}
+
 .photodel img{
     width: 30px;
     height: 30px;
-    
-}
-.photoedit{
-    margin: 5px;
 }
 .photoedit img{
     width: 30px;
     height: 30px;
 }
-.photolike{
-    margin: 5px;
-}
-.photolike img{
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    
-   
-}
-.photodislike{
-    margin: 5px;
-}
-.photodislike img{
-    width: 30px;
-    height: 30px;
-    display: inline-block;  
-}
 .modal{
     width: 100%;
-}
-.updatePost{
-    width: 20%;
-    margin: 2%;
-    margin-left: 39%;
-}
-.likesrating{
-    display: inline-block;
-    margin-top: 2%;
 }

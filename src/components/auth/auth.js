@@ -7,6 +7,8 @@ const socialAuth = async (provider) => {
       .signInWithPopup(provider)
       .then((res) => {
         return res.user;
+
+        
       })
       .catch((er) => {
         return er.message;

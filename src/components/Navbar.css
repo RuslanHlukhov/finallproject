@@ -6,7 +6,9 @@ a{
     text-align: center;
 }
 .btn_login{
-    width: 5rem;
+    width: 9rem;
+    position: relative;
+    margin-top: 2%;
 }
 .btn_lang{
     width: 5rem;
@@ -27,4 +29,102 @@ a{
 
 .btn_google{
     margin: 5px;
+}
+.color{
+    color:white;
+    padding: auto;
+    margin: auto;
+    
+}
+.menu{
+    text-align: center; 
+}
+.navbar{
+    width: 100%;
+    background-color: #a8a3a3;
+}
+
+.dark{
+    margin-right: 3%;
+}
+.brandNavbar{
+    margin-left: 1%;
+}
+@media (max-width: 1281px) {
+.login {
+    position: relative;
+    
+}
+}
+@media (max-width: 992px) {
+    .btn_login {
+        width: 9rem;
+        position: relative;
+        left: 43%; 
+        margin-top: 2%;
+    }
+}
+@media (max-width: 769px) {
+    .btn_login {
+        width: 9rem;
+        position: relative;
+        left: 40.5%; 
+        margin-top: 2%;
+    }
+    .dark{
+        position: relative;
+        left: 39%;
+        margin: 3%;
+    }
+    .toggle{
+        position: relative;
+        right: 7%;
+    }
+    .menu{
+        position: relative;
+        left: 6%;
+    }
+    .navbar{
+        width: 95%;
+    }
+}
+
+@media (max-width: 541px) {
+    .btn_login {
+        width: 9rem;
+        position: relative;
+        left: 37%; 
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 415px) {
+    .btn_login {
+        width: 9rem;
+        position: relative;
+        left: 33.5%; 
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 376px) {
+    .btn_login {
+        width: 9rem;
+        position: relative;
+        left: 32%; 
+        margin-top: 2%;
+    }
+    .dark{
+        position: relative;
+        left: 32%;
+        margin: 3%;
+    }
+}
+@media (max-width: 281px) {
+    .btn_login {
+        width: 9rem;
+        position: relative;
+        left: 26%; 
+        margin-top: 2%;
+    }
 }

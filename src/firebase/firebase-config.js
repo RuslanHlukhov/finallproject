@@ -1,3 +1,4 @@
+import React, {createContext} from 'react';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/firebase-database-compat";
@@ -14,6 +15,7 @@ const firebaseConfig = {
 
 
   firebase.initializeApp(firebaseConfig)
-
+  export const Context = createContext(null)
+  const auth = firebase.auth()
 
   export default firebase;

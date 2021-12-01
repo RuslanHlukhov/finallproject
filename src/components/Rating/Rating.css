@@ -1,0 +1,50 @@
+input[type="radio"]{
+    display: none;
+}
+.star{
+    cursor: pointer;
+    transition: color 200ms;
+}
+.rating{
+    position: relative;
+    text-align: right;
+    margin-top: -4%;
+}
+
+@media (max-width: 769px) {
+    .rating{
+        position: relative;
+        text-align: right;
+        margin-top: -8%;
+    }
+}
+
+@media (max-width: 415px) {
+    .rating{
+        position: relative;
+        text-align: center;
+    }
+}
+
+@media (max-width: 376px) {
+    .rating{
+        position: relative;
+        text-align: center;
+    }
+}
+
+@media (max-width: 541px) {
+    .rating{
+        position: relative;
+        text-align: right;
+        margin-top: -11%;
+    }
+}
+
+@media (max-width: 281px) {
+    .btn_login {
+        position: relative;
+        margin-right: -4%;
+        text-align: center;
+    }
+}
