@@ -7,7 +7,7 @@ import imgGoogle from './../img/google.png'
 import imgGit from './../img/github.png'
 import "firebase/compat/auth";
 import socialAuth from "./auth/auth";
-import { googleProvider } from '../firebase/authMethods'
+import { googleProvider, githubProvider } from '../firebase/authMethods'
 import { useDispatch } from "react-redux";
 import { addUser, logIn, getPosts} from "../redux/action";
 import { useSelector } from 'react-redux';
@@ -75,7 +75,6 @@ const Navibar = () => {
         }                         
     } 
 
-   
 
 
     const { t, i18n } = useTranslation();
@@ -147,8 +146,6 @@ const Navibar = () => {
                            
                            <Row>
                            <div className="color">{}</div>
-                     
-                           
                             <Button  variant="primary"
                                 className="me-2 btn_login"
                                 onClick={ signOut}
@@ -168,6 +165,7 @@ const Navibar = () => {
                             <img src={imgGoogle} alt="google" />
                             </Button>
                              <Button className="btn_gitHub"
+                              onClick={() => handleBtn(githubProvider)}
                              >
                             <img src={imgGit} alt="gitHub" />
                             </Button>

@@ -1,58 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Col } from 'react-bootstrap'
-import Post from "../Post/Post";
-import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
-import { addTest, getAllPost, } from "../Api/Api";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../redux/action";
+import { getAllPost } from "../Api/Api";
 import FormPost from "../FormPost/FormPost";
+import Post from "../Post/Post";
 
+const Home = () => {
+  const dispatch = useDispatch();
+  const isLogin = useSelector(({ isLogin }) => isLogin);
+  const [postList, setPostList] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
 
+  useEffect(() => {
+    getAllPost().then((res) => {
+      console.log(res);
+      dispatch(getPosts(res));
+      setPostList(res);
+    });
+  }, [dispatch]);
 
-const Home = (props) => {
-    const dispatch = useDispatch();
-    const { t, i18n } = useTranslation();
-    const handleClick = (lang) => {
-        i18n.changeLanguage(lang);
-    }  
-    const [postList, setPostList] = useState([]);
-    // const [isUpdate, setIsUpdate] = useState(false);
+  useEffect(() => {
+    if (isUpdate) {
+      getAllPost().then((res) => {
+        dispatch(getPosts(res));
+        setPostList(res);
+        setIsUpdate(false);
+      });
+    }
+  }, [isUpdate, postList.length, dispatch]);
 
-    useEffect(() => {
-        // if(isUpdate){
-        getAllPost().then((res)=>{ 
-            // dispatch(getPosts(res));
-            setPostList(res);
-            // setIsUpdate(true) 
-        });
-    // }
-    }, []);
-
-    const isLogin = useSelector(({ isLogin }) => isLogin);
-    return (
-        <div>
-            {isLogin ?
-            <div className="information col-lg-9" >
-                <FormPost />
-                    {postList.map((post)=>{
-                    return  <Post post={post} key={post.id}  />           
-                     })}   
-                                                     
-               </div>               
-                :
-                <div>
-                    <Col>  
-                    {postList.map((post)=>{
-                    return  <Post post={post} key={post.id} />                   
-                     })}                      
-                     </Col>
-               </div>
-
-               
-            }   
-                   
-        </div>
-        
-    )
-}
+  return (
+    <div>
+      <div className="information col-lg-9">
+        {isLogin ? <FormPost setIsUpdate={setIsUpdate} /> : null}
+        {postList.map((post) => {
+          return <Post post={post} key={post.id} setIsUpdate={setIsUpdate}/>;
+        })}
+      </div>
+    </div>
+  );
+};
 
 export default Home;

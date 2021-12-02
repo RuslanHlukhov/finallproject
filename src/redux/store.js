@@ -3,10 +3,6 @@ import { reducer } from "./reduser";
 
 export const initStore = {
   isLogin: false,
-  user: {
-    nameUser: '',
-    idUser: '',   
-  },
   posts: [],
 };
 
