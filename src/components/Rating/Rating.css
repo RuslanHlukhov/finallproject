@@ -10,6 +10,9 @@ input[type="radio"]{
     text-align: right;
     margin-top: -4%;
 }
+.details{
+    width: 120px;
+}
 
 @media (max-width: 769px) {
     .rating{
@@ -36,8 +39,8 @@ input[type="radio"]{
 @media (max-width: 541px) {
     .rating{
         position: relative;
-        text-align: right;
-        margin-top: -11%;
+        text-align: center;
+        margin-top: -3px;
     }
 }
 

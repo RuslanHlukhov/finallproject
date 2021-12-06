@@ -42,6 +42,7 @@ a{
 .navbar{
     width: 100%;
     background-color: #a8a3a3;
+    padding: 1 2%;
 }
 
 .dark{
@@ -113,6 +114,7 @@ a{
         position: relative;
         left: 32%; 
         margin-top: 2%;
+        margin-bottom: 10px;
     }
     .dark{
         position: relative;

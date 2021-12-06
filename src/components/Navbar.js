@@ -16,23 +16,23 @@ import Darkstyles from "./Darkstyle/Darkstyle";
 
 const Navibar = () => {
 
-    const switchDarkTheme = () =>{
-        window.localStorage.setItem('theme', 'dark')
-        const style = document.createElement('style')
-        document.head.appendChild(style)
-        style.innerHTML = Darkstyles
-    }
+    // const switchDarkTheme = () =>{
+    //     window.localStorage.setItem('theme', 'dark')
+    //     const style = document.createElement('style')
+    //     document.head.appendChild(style)
+    //     style.innerHTML = Darkstyles
+    // }
 
 
-    useEffect(()=>{
-        if(window['localStorage'] !== null){
-            window.localStorage.getItem('theme') === 'dark'
-                ? 
-                switchDarkTheme()
-                :
-                window.localStorage.setItem('theme', 'light')
-        }
-    })
+    // useEffect(()=>{
+    //     if(window['localStorage'] !== null){
+    //         window.localStorage.getItem('theme') === 'dark'
+    //             ? 
+    //             switchDarkTheme()
+    //             :
+    //             window.localStorage.setItem('theme', 'light')
+    //     }
+    // })
 
 
     
@@ -64,15 +64,15 @@ const Navibar = () => {
                 })                       
             )                    
         }
-        if (res) {
-            dispatch(logIn(true))
-            dispatch(
-                addUser({
-                  nameUser: res.displayName,
-                  idUser: res.uid,
-                })
-              );
-        }                         
+        // if (res) {
+        //     dispatch(logIn(true))
+        //     dispatch(
+        //         addUser({
+        //           nameUser: res.displayName,
+        //           idUser: res.uid,
+        //         })
+        //       );
+        // }                         
     } 
 
 
@@ -82,17 +82,9 @@ const Navibar = () => {
         i18n.changeLanguage(lang);
     }
 
-    
-    const name = useSelector(({user}) => {
-        return user.nameUser
-        
-    })
 
     const isLogin = useSelector(({ isLogin }) => isLogin);
-    const nameId = useSelector(({user}) => {
-        return user.idUser
-    })
-
+    
     const signOut = () => {
         dispatch(logIn(false));
         window.localStorage.removeItem('user');

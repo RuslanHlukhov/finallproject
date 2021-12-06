@@ -34,6 +34,7 @@ const FormPost = ({ setIsUpdate }) => {
       });
       setIsUpdate(true);
       setError("");
+      updateInput()
     } else {
       setError("Заполните все поля");
     }
@@ -66,6 +67,13 @@ const FormPost = ({ setIsUpdate }) => {
   const handleSelect = (e) => {
     console.log(e);
     setCategory(e);
+  };
+
+  const updateInput = () => {
+    setImage([]);
+    setTitle('');
+    setCategory('');
+    setText('');
   };
  
   return (
@@ -101,7 +109,7 @@ const FormPost = ({ setIsUpdate }) => {
             </Button>
           </InputGroup>
           <Form.Group>
-            <Form.Label>Title</Form.Label>
+            <Form.Label>{t('title.1')}</Form.Label>
             <Form.Control
               type="title"
               placeholder=""
@@ -111,7 +119,7 @@ const FormPost = ({ setIsUpdate }) => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Select text</Form.Label>
+            <Form.Label>{t('text.1')}</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -147,7 +155,7 @@ const FormPost = ({ setIsUpdate }) => {
                 className="btn__send"
                 as="input"
                 type="button"
-                value="Input"
+                value={t('input.1')}
                 onClick={addPost}
               />
             </Col>

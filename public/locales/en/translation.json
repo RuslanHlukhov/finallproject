@@ -19,6 +19,18 @@
     },
     "users":{
         "1":"Users"
+    }, 
+    "title":{
+        "1":"Title"
+    },
+    "text":{
+        "1":"Select text"
+    },
+    "input":{
+        "1": "Input"
+    },
+    "details":{
+        "1": "Details"
     }
 
 }

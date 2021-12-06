@@ -16,6 +16,7 @@ import like from "../../img/like.svg";
 import { deletePost, updatePost } from "../Api/Api";
 import Rating from "../Rating/Rating";
 import "./Post.css";
+import { useTranslation } from 'react-i18next';
 
 const Post = ({ post, setIsUpdate }) => {
   const isLogin = useSelector(({ isLogin }) => isLogin);
@@ -50,6 +51,10 @@ const Post = ({ post, setIsUpdate }) => {
     });
     setIsUpdate(true);
   };
+  const { t, i18n } = useTranslation();
+    const handleClick = (lang) => {
+        i18n.changeLanguage(lang);
+    }
 
   return (
     <div className="post">
@@ -65,8 +70,11 @@ const Post = ({ post, setIsUpdate }) => {
                   <Card.Title>{title}</Card.Title>
                   <Card.Text className="textoneline">{text}</Card.Text>
                   <Col>
-                    <Button variant="primary" onClick={handleShow}>
-                      Подробнее
+                    <Button variant="primary" 
+                    onClick={handleShow}
+                    className="details"
+                    >
+                    {t('details.1')}
                     </Button>
                     <Button
                       className="photodel"
