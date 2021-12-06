@@ -65,7 +65,6 @@ const FormPost = ({ setIsUpdate }) => {
   };
 
   const handleSelect = (e) => {
-    console.log(e);
     setCategory(e);
   };
 
