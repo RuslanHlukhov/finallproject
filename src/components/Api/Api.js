@@ -1,7 +1,7 @@
 import Axios from "axios";
 
-// const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/users'
-const dbUrl = "http://localhost:3001/api/users";
+const dbUrl = 'https://backendforfinallproject.herokuapp.com/api/users'
+// const dbUrl = "http://localhost:3001/api/users";
 export const addTest = (res) => {
   Axios.post(`${dbUrl}`, res)
     .then((response) => {
